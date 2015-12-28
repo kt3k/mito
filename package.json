@@ -6,7 +6,9 @@
   "scripts": {
     "test": "node test.js",
     "lint": "souffle",
-    "min": "uglifyjs --mangle --compress -- mito.js > mito.min.js ; perl -pi -e 'chomp if eof' mito.min.js"
+    "min": "uglifyjs --mangle --compress -- mito.js > mito.min.js ; perl -pi -e 'chomp if eof' mito.min.js",
+    "get-byte": "npm run min ; wc -c mito.min.js | awk '{print $1}'",
+    "update-readme": "sed -i -e 's/[[:digit:]]*B minified/'`npm run -s get-byte`'B minified/' README.md"
   },
   "repository": {
     "type": "git",
