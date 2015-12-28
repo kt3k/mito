@@ -11,7 +11,7 @@ Similar to `.ejs`
 ```ejs
 <html>
   <head>
-    <title></title>
+    <title><%= title %></title>
   </head>
   <body>
     <ul>
@@ -21,6 +21,16 @@ Similar to `.ejs`
     </ul>
   </body>
 </html>
+```
+
+With the above string, the following renders it.
+
+```js
+mito(above)({title: 'Hello', items: [
+  {name: 'Linux', url: 'https://github.com/torvalds/linux'},
+  {name: 'XNU', url: 'https://github.com/opensource-apple/xnu'},
+  {name: 'Hurd', url: 'https://www.gnu.org/software/hurd/hurd.html'}
+]})
 ```
 
 # API
