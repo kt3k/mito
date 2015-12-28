@@ -1,0 +1,30 @@
+{
+  "name": "mito",
+  "version": "1.0.0",
+  "description": "micro-templating function",
+  "main": "mito.js",
+  "scripts": {
+    "test": "node test.js",
+    "lint": "souffle",
+    "min": "uglifyjs --mangle --compress -- mito.js > mito.min.js ; perl -pi -e 'chomp if eof' mito.min.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kt3k/mito.git"
+  },
+  "keywords": [
+    "template",
+    "template-engine"
+  ],
+  "author": "Yoshiya Hinosawa <stibium121@gmail.com> (https://twitter.com/kt3k)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kt3k/mito/issues"
+  },
+  "homepage": "https://github.com/kt3k/mito#readme",
+  "devDependencies": {
+    "souffle-cli": "^2.0.2",
+    "tape": "^4.4.0",
+    "uglifyjs2": "0.0.1"
+  }
+}
