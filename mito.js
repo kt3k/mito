@@ -20,7 +20,7 @@ module.exports = function (str, replace) {
      * @param {Object} o The template parameter
      * @param {Array} [p=[]] The string buffer (don't use)
      */
-    return new Function('o,p', 'p=[];' +
+    return Function('o,p', 'p=[];' +
 
         // Introduce the data as local variables using with(){}
         'with(o||p){' +
