@@ -26,7 +26,7 @@ module.exports = function (str, replace) {
 
             // Convert the template into pure JavaScript
             str
-            [replace](/[\r\t\n]/g, ' ')
+            [replace](/\s/g, ' ')
             [replace](/<%/g, '\t')
             [replace](/((^|%>)[^\t]*)'/g, '$1\r')
             [replace](/\t=(.*?)%>/g, '\',$1,\'')
