@@ -4,7 +4,7 @@
 
 This is forked from John Resig's [micro-templating](http://ejohn.org/blog/javascript-micro-templating/).
 
-Just 199B minified.
+Just 194B minified.
 
 # Syntax
 
@@ -55,7 +55,7 @@ Returns the rendered string with template parameter
 
 # Feature / Restriction
 
-- 199B minified
+- 194B minified
 - No cache mechanism
 - No include/import/require support
 - All whitespaces in template are converted into space (0x20)

@@ -20,10 +20,10 @@ module.exports = function (str, replace) {
      * @param {Object} o The template parameter
      * @param {String} [J=''] The string buffer (don't use)
      */
-    return Function('o,J', 'J=\'\';' +
+    return Function('o,J',
 
         // Introduce the data as local variables using with(){}
-        'with(o||J){' +
+        'with(o||{}){J=\'' +
 
             // Convert the template into pure JavaScript
             str
@@ -36,7 +36,7 @@ module.exports = function (str, replace) {
             [replace](/<%=(.*?)%>/g, '<%J+=$1%>')
 
             [replace](/<%/g, '\';') // converts the opening tags
-            [replace](/^|(%>)/g, ';J+=\'') + // converts the closing tags
+            [replace](/%>/g, ';J+=\'') + // converts the closing tags
 
         '\'}' +
 
