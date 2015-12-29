@@ -4,7 +4,7 @@
 
 This is forked from John Resig's [micro-templating](http://ejohn.org/blog/javascript-micro-templating/).
 
-Just [194B minified](https://raw.githubusercontent.com/kt3k/mito/master/mito.min.js).
+Just [214B minified](https://raw.githubusercontent.com/kt3k/mito/master/mito.min.js).
 
 # Syntax
 
@@ -55,11 +55,10 @@ Returns the rendered string with template parameter
 
 # Feature / Restriction
 
-- 194B minified
+- 214B minified
 - No cache mechanism
 - No include/import/require support
 - Line breaks in html is removed
-- Unable to use % in javascript code
 
 # License
 

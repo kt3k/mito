@@ -32,11 +32,10 @@ test('white spaces', function (t) {
 })
 
 test('single quote', function (t) {
-    t.plan(2)
+    t.plan(3)
 
     t.equal(mito('<span class=\'<%= cls %>\'></span>')({cls: 'foo'}), '<span class=\'foo\'></span>')
     t.equal(mito('<span class=\'<%= \'foo\' %>\'></span>')(), '<span class=\'foo\'></span>')
 
-    // note: This does not work
-    // t.equal(mito('<span class=\'<%= \'foo\' + (1%2) %>\'></span>')(), '<span class=\'foo1\'></span>')
+    t.equal(mito('<span class=\'<%= \'foo\' + (1%2) %>\'></span>')(), '<span class=\'foo1\'></span>')
 })

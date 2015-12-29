@@ -31,15 +31,17 @@ module.exports = function (str, replace) {
             // Convert the template into pure JavaScript
             str
 
+            [replace](/<%/g, '\v')
+
             // Escapes single quote, \r and \n in literal mode to the escape sequence
             // escaped \r and \n means line continuations
-            [replace](/\n|\r|'(?![^%]*%>)/g, '\\$&')
+            [replace](/\n|\r|'(?![^\v]*%>)/g, '\\$&')
 
             // Replaces <%= ... %> pattern, using non-greedy matching (.*?)
-            [replace](/<%=(.*?)%>/g, '<%J+=$1%>')
+            [replace](/\v=(.*?)%>/g, '\vJ+=$1%>')
 
             // Converts the opening and closing tags
-            [replace](/<%/g, '\';')
+            [replace](/\v/g, '\';')
             [replace](/%>/g, ';J+=\'') +
 
         '\'}' +
