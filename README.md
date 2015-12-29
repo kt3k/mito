@@ -57,6 +57,7 @@ Returns the rendered string with template parameter
 - No cache mechanism
 - No include/import/require support
 - All whitespaces in template are converted into space (0x20)
+- Unable to use % in javascript code
 
 # License
 
