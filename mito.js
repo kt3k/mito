@@ -20,23 +20,23 @@ module.exports = function (str, replace) {
      * @param {Object} o The template parameter
      * @param {Array} [p=[]] The string buffer (don't use)
      */
-    return Function('o,p', 'p=[];' +
+    return Function('o,J', 'J=\'\';' +
 
         // Introduce the data as local variables using with(){}
-        'with(o||p){' +
+        'with(o||J){' +
 
             // Convert the template into pure JavaScript
-            ('%>' + str)
+            str
 
             [replace](/\n|\r|'(?![^%]*%>)/g, '\\$&') // escapes single quotes in literal mode to the escape sequence
 
-            [replace](/<%=(.*?)%>/g, '\',$1,\'') // replaces <%= ... %> pattern, using non-greedy matching (.*?)
+            [replace](/<%=(.*?)%>/g, '<%J+=$1%>') // replaces <%= ... %> pattern, using non-greedy matching (.*?)
 
-            [replace](/<%/g, '\');') // converts the opening tags
-            [replace](/%>/g, ';p.push(\'') + // converts the closing tags
+            [replace](/<%/g, '\';') // converts the opening tags
+            [replace](/^|(%>)/g, ';J+=\'') + // converts the closing tags
 
-        '\')}' +
+        '\'}' +
 
-        'return p.join(\'\')')
+        'return J')
 
 }
