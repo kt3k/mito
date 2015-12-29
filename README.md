@@ -1,4 +1,4 @@
-# mito v1.0.2 [![Build Status](https://travis-ci.org/kt3k/mito.svg)](https://travis-ci.org/kt3k/mito) [![npm version](https://img.shields.io/npm/v/mito.svg)](https://www.npmjs.com/package/mito)
+# mito v1.0.3 [![Build Status](https://travis-ci.org/kt3k/mito.svg)](https://travis-ci.org/kt3k/mito) [![npm version](https://img.shields.io/npm/v/mito.svg)](https://www.npmjs.com/package/mito)
 
 > micro-templating function
 
