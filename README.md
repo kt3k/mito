@@ -51,11 +51,12 @@ Returns template function compiled with the given template string.
 
 Returns the rendered string with template parameter
 
-# Feature
+# Feature / Restriction
 
 - 266B minified
 - No cache mechanism
 - No include/import/require support
+- No single quote in html, use double quote only
 
 # License
 

@@ -22,20 +22,20 @@ module.exports = function (str, replace) {
         // Introduce the data as local variables using with(){}
         'with(o||p){' +
 
-            'p.push("' +
+            'p.push(\'' +
 
             // Convert the template into pure JavaScript
             str
             [replace](/[\r\t\n]/g, ' ')
             [replace](/<%/g, '\t')
             [replace](/((^|%>)[^\t]*)'/g, '$1\r')
-            [replace](/\t=(.*?)%>/g, '",$1,"')
-            [replace](/\t/g, '");')
-            [replace](/%>/g, ';p.push("')
-            [replace](/\r/g, '\\"') + '")' +
+            [replace](/\t=(.*?)%>/g, '\',$1,\'')
+            [replace](/\t/g, '\');')
+            [replace](/%>/g, ';p.push(\'')
+            [replace](/\r/g, '\\\'') + '\')' +
 
         '}' +
 
-        'return p.join("")')
+        'return p.join(\'\')')
 
 }
