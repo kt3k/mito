@@ -4,11 +4,12 @@ var test = require('tape')
 var mito = require('./')
 
 test('basic templating', function (t) {
-    t.plan(3)
+    t.plan(4)
 
     t.equal(mito('foo')(), 'foo')
     t.equal(mito('<h1><%= title %></h1>')({title: 'Foo'}), '<h1>Foo</h1>')
     t.equal(mito('<p class="<%= cls %>">Baz!</p>')({cls: 'bar'}), '<p class="bar">Baz!</p>')
+    t.equal(mito('a<% var a = 1 %>b<%= a %>')(), 'ab1')
 })
 
 test('for statement', function (t) {

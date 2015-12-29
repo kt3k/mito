@@ -26,7 +26,7 @@ module.exports = function (str, replace) {
         'with(o||p){' +
 
             // Convert the template into pure JavaScript
-            ('%>' + str + '<%')
+            ('%>' + str)
 
             [replace](/\n|\r|'(?![^%]*%>)/g, '\\$&') // escapes single quotes in literal mode to the escape sequence
 
@@ -35,7 +35,7 @@ module.exports = function (str, replace) {
             [replace](/<%/g, '\');') // converts the opening tags
             [replace](/%>/g, ';p.push(\'') + // converts the closing tags
 
-        '}' +
+        '\')}' +
 
         'return p.join(\'\')')
 
