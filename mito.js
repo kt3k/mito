@@ -9,9 +9,11 @@
  *
  * @param {String} str The template string
  * @param {String} [replace='replace'] Don't use
+ * @return {Function} Template function
  */
 module.exports = function (str, replace) {
     /* eslint no-new-func: 0, no-unexpected-multiline: 0 */
+
     replace = 'replace'
 
     /**
@@ -19,6 +21,7 @@ module.exports = function (str, replace) {
      *
      * @param {Object} o The template parameter
      * @param {String} [J=''] The string buffer (don't use)
+     * @return {String} Rendered string
      */
     return Function('o,J',
 
@@ -28,18 +31,21 @@ module.exports = function (str, replace) {
             // Convert the template into pure JavaScript
             str
 
-            // escapes single quote, \r and \n in literal mode to the escape sequence
+            // Escapes single quote, \r and \n in literal mode to the escape sequence
             // escaped \r and \n means line continuations
             [replace](/\n|\r|'(?![^%]*%>)/g, '\\$&')
 
-            // replaces <%= ... %> pattern, using non-greedy matching (.*?)
+            // Replaces <%= ... %> pattern, using non-greedy matching (.*?)
             [replace](/<%=(.*?)%>/g, '<%J+=$1%>')
 
-            [replace](/<%/g, '\';') // converts the opening tags
-            [replace](/%>/g, ';J+=\'') + // converts the closing tags
+            // Converts the opening and closing tags
+            [replace](/<%/g, '\';')
+            [replace](/%>/g, ';J+=\'') +
 
         '\'}' +
 
-        'return J')
+        'return J'
+
+    )
 
 }
