@@ -58,7 +58,7 @@ Returns the rendered string with template parameter
 - 194B minified
 - No cache mechanism
 - No include/import/require support
-- All whitespaces in template are converted into space (0x20)
+- Line breaks in html is removed
 - Unable to use % in javascript code
 
 # License
