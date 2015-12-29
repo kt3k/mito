@@ -35,6 +35,12 @@ mito(above)({title: 'Hello', items: [
 ]})
 ```
 
+# Install
+
+```
+npm install mito
+```
+
 # API
 
 ```js
@@ -56,6 +62,7 @@ Returns the rendered string with template parameter
 # Feature / Restriction
 
 - 214B minified
+- No dependency
 - No cache mechanism
 - No include/import/require support
 - Line breaks in html is removed
@@ -63,3 +70,9 @@ Returns the rendered string with template parameter
 # License
 
 MIT
+
+# Other small template engines
+
+- [doT](https://github.com/olado/doT)
+- [lodash.template](https://www.npmjs.com/package/lodash.template)
+- [underscore#template](http://underscorejs.org/#template)
