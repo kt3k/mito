@@ -18,7 +18,7 @@ module.exports = function (str, replace) {
      * Renders the given template parameter.
      *
      * @param {Object} o The template parameter
-     * @param {Array} [p=[]] The string buffer (don't use)
+     * @param {String} [J=''] The string buffer (don't use)
      */
     return Function('o,J', 'J=\'\';' +
 
@@ -28,9 +28,12 @@ module.exports = function (str, replace) {
             // Convert the template into pure JavaScript
             str
 
-            [replace](/\n|\r|'(?![^%]*%>)/g, '\\$&') // escapes single quotes in literal mode to the escape sequence
+            // escapes single quote, \r and \n in literal mode to the escape sequence
+            // escaped \r and \n means line continuations
+            [replace](/\n|\r|'(?![^%]*%>)/g, '\\$&')
 
-            [replace](/<%=(.*?)%>/g, '<%J+=$1%>') // replaces <%= ... %> pattern, using non-greedy matching (.*?)
+            // replaces <%= ... %> pattern, using non-greedy matching (.*?)
+            [replace](/<%=(.*?)%>/g, '<%J+=$1%>')
 
             [replace](/<%/g, '\';') // converts the opening tags
             [replace](/^|(%>)/g, ';J+=\'') + // converts the closing tags
