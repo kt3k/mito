@@ -53,7 +53,7 @@ Returns the rendered string with template parameter
 
 # Feature / Restriction
 
-- 260B minified
+- 258B minified
 - No cache mechanism
 - No include/import/require support
 - No single quote in html, use double quote only
