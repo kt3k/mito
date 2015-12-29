@@ -28,9 +28,7 @@ module.exports = function (str, replace) {
             // Convert the template into pure JavaScript
             ('%>' + str + '<%')
 
-            [replace](/\r|\n/g, ' ')
-
-            [replace](/'(?![^%]*%>)/g, '\\\'') // escapes single quotes in literal mode to the escape sequence
+            [replace](/\n|\r|'(?![^%]*%>)/g, '\\$&') // escapes single quotes in literal mode to the escape sequence
 
             [replace](/<%=(.*?)%>/g, '\',$1,\'') // replaces <%= ... %> pattern, using non-greedy matching (.*?)
 

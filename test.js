@@ -20,12 +20,14 @@ test('for statement', function (t) {
 })
 
 test('white spaces', function (t) {
-    t.plan(4)
+    t.plan(6)
 
-    t.equal(mito('\t')(), '\t')
-    t.equal(mito('\r')(), ' ')
-    t.equal(mito('\n')(), ' ')
     t.equal(mito(' ')(), ' ')
+    t.equal(mito('\t')(), '\t')
+    t.equal(mito('\r')(), '')
+    t.equal(mito('\n')(), '')
+    t.equal(mito('a\nb\rc')(), 'abc')
+    t.equal(mito('\'\n\'\r\'')(), '\'\'\'')
 })
 
 test('single quote', function (t) {
