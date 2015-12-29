@@ -1,6 +1,6 @@
 {
   "name": "mito",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "micro-templating function",
   "main": "mito.js",
   "scripts": {
