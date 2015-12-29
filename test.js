@@ -22,7 +22,7 @@ test('for statement', function (t) {
 test('white spaces', function (t) {
     t.plan(4)
 
-    t.equal(mito('\t')(), ' ')
+    t.equal(mito('\t')(), '\t')
     t.equal(mito('\r')(), ' ')
     t.equal(mito('\n')(), ' ')
     t.equal(mito(' ')(), ' ')

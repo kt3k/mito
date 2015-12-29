@@ -2,6 +2,9 @@
  * This is forked from John Resig's micro-templating function
  * http://ejohn.org/blog/javascript-micro-templating/
  *
+ * Also thanks to Neil Donewar's correction
+ * http://ejohn.org/blog/javascript-micro-templating/#comment-321850
+ *
  * Generate a reusable function that will serve as a template generator.
  *
  * @param {String} str The template string
@@ -25,13 +28,9 @@ module.exports = function (str, replace) {
             // Convert the template into pure JavaScript
             ('%>' + str + '<%')
 
-            [replace](/\s/g, ' ')
+            [replace](/\r|\n/g, ' ')
 
-            [replace](/'(?=[^%]*%>)/g, '\v') // escapes single quotes in javascript mode to \v
-
-            [replace](/'/g, '\\\'') // escapes single quotes in literal mode to escape sequence
-
-            [replace](/\v/g, '\'') // restores single quotes in javascript mode
+            [replace](/'(?![^%]*%>)/g, '\\\'') // escapes single quotes in literal mode to the escape sequence
 
             [replace](/<%=(.*?)%>/g, '\',$1,\'') // replaces <%= ... %> pattern, using non-greedy matching (.*?)
 
