@@ -4,7 +4,7 @@
 
 This is forked from John Resig's [micro-templating](http://ejohn.org/blog/javascript-micro-templating/).
 
-Just 194B minified.
+Just [194B minified](https://raw.githubusercontent.com/kt3k/mito/master/mito.min.js).
 
 # Syntax
 
