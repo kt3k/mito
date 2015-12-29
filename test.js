@@ -19,7 +19,7 @@ test('for statement', function (t) {
     }), '235711')
 })
 
-test('white spaces, all whitespaces become 0x20', function (t) {
+test('white spaces', function (t) {
     t.plan(4)
 
     t.equal(mito('\t')(), ' ')
@@ -28,13 +28,8 @@ test('white spaces, all whitespaces become 0x20', function (t) {
     t.equal(mito(' ')(), ' ')
 })
 
-test('if it has a single quote', function (t) {
+test('single quote', function (t) {
     t.plan(1)
 
-    try {
-        mito("<span class='fa-icon'></span>")()
-        t.assert(false)
-    } catch (e) {
-        t.assert(true, 'cannot handle single quote')
-    }
+    t.equal(mito('<span class=\'<%= cls %>\'></span>')({cls: 'fa-icon'}), '<span class=\'fa-icon\'></span>')
 })

@@ -25,18 +25,18 @@ module.exports = function (str, replace) {
             // Convert the template into pure JavaScript
             ('%>' + str + '<%')
 
-            [replace](/\s/g, ' ') // turns all whitespaces into 0x20
+            [replace](/\s/g, ' ')
 
-            [replace](/<%/g, '\t') // escapes open tag to \t
+            [replace](/'(?=[^%]*%>)/g, '\v') // escapes single quotes in javascript mode to \v
 
-            [replace](/(%>[^\t]*)'/g, '$1\r') // escapes all single quotes in literal mode to \r
+            [replace](/'/g, '\\\'') // escapes single quotes in literal mode to escape sequence
 
-            [replace](/\t=(.*?)%>/g, '\',$1,\'') // non-greedy match of <%= ... %> pattern
+            [replace](/\v/g, '\'') // restores single quotes in javascript mode
 
-            [replace](/\t/g, '\');')
-            [replace](/%>/g, ';p.push(\'')
+            [replace](/<%=(.*?)%>/g, '\',$1,\'') // replaces <%= ... %> pattern, using non-greedy matching (.*?)
 
-            [replace](/\r/g, '\\\'') + // restore single quotes
+            [replace](/<%/g, '\');') // converts the opening tags
+            [replace](/%>/g, ';p.push(\'') + // converts the closing tags
 
         '}' +
 

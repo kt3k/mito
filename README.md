@@ -56,7 +56,7 @@ Returns the rendered string with template parameter
 - 258B minified
 - No cache mechanism
 - No include/import/require support
-- No single quote in html, use double quote only
+- All whitespaces in template are converted into space (0x20)
 
 # License
 
