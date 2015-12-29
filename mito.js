@@ -25,23 +25,24 @@ module.exports = function (str, replace) {
      */
     return Function('o,J',
 
-        // Introduce the data as local variables using with(){}
+        // Introduces the data as local variables using with(){}
         'with(o||{}){J=\'' +
 
-            // Convert the template into pure JavaScript
+            // Converts the template into pure JavaScript
             str
 
-            [replace](/<%/g, '\v')
+            // Converts the opening tag to \0
+            [replace](/<%/g, '\0')
 
             // Escapes single quote, \r and \n in literal mode to the escape sequence
-            // escaped \r and \n means line continuations
-            [replace](/\n|\r|'(?![^\v]*%>)/g, '\\$&')
+            // (escaped \r and \n means line continuations, = empty)
+            [replace](/\n|\r|'(?![^\0]*%>)/g, '\\$&')
 
             // Replaces <%= ... %> pattern, using non-greedy matching (.*?)
-            [replace](/\v=(.*?)%>/g, '\vJ+=$1%>')
+            [replace](/\0=(.*?)%>/g, '\0J+=$1%>')
 
             // Converts the opening and closing tags
-            [replace](/\v/g, '\';')
+            [replace](/\0/g, '\';')
             [replace](/%>/g, ';J+=\'') +
 
         '\'}' +
