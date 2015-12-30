@@ -24,11 +24,11 @@ test('white spaces', function (t) {
     t.plan(6)
 
     t.equal(mito(' ')(), ' ')
-    t.equal(mito('\t')(), '\t')
-    t.equal(mito('\r')(), '')
-    t.equal(mito('\n')(), '')
-    t.equal(mito('a\nb\rc')(), 'abc')
-    t.equal(mito('\'\n\'\r\'')(), '\'\'\'')
+    t.equal(mito('\t')(), ' ')
+    t.equal(mito('\r')(), ' ')
+    t.equal(mito('\n')(), ' ')
+    t.equal(mito('a\nb\rc')(), 'a b c')
+    t.equal(mito('\'\n\'\r\'')(), '\' \' \'')
 })
 
 test('single quote', function (t) {
@@ -38,4 +38,10 @@ test('single quote', function (t) {
     t.equal(mito('<span class=\'<%= \'foo\' %>\'></span>')(), '<span class=\'foo\'></span>')
 
     t.equal(mito('<span class=\'<%= \'foo\' + (1%2) %>\'></span>')(), '<span class=\'foo1\'></span>')
+})
+
+test('line breaks in js code', function (t) {
+    t.plan(1)
+
+    t.equal(mito('<b><%=\n\'foo\'\n%></b>')(), '<b>foo</b>')
 })
