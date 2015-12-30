@@ -65,7 +65,7 @@ Returns the rendered string with template parameter
 - No dependency
 - No cache mechanism
 - No include/import/require support
-- Line breaks in html is removed
+- Line breaks become whitespace (0x20)
 
 # License
 
