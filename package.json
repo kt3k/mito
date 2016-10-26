@@ -25,7 +25,7 @@
   },
   "homepage": "https://github.com/kt3k/mito#readme",
   "devDependencies": {
-    "souffle-cli": "^2.0.2",
+    "souffle-cli": "^3.1.1",
     "tape": "^4.4.0",
     "uglifyjs2": "0.0.1"
   }
